@@ -1,0 +1,6 @@
+telebot
+bs4
+requests
+lxml
+os
+pickle
