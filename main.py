@@ -76,11 +76,5 @@ def upd(msg):
                 bot.send_message(my_id, contests[i] + " " + name + "\n" + resp)
     dump()
     bot.send_message(my_id, "Больше обновлений нет", reply_markup=kb)
-            
-@bot.message_handler(type=['text'])
-def ans(msg):
-    t = msg.text
-    if t[0] == '!':
-        
 
 bot.polling()
