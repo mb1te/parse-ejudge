@@ -2,3 +2,4 @@ pytelegrambotapi
 bs4
 requests
 lxml
+boto.s3.connection

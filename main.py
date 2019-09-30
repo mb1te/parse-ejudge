@@ -2,9 +2,13 @@ import telebot
 import os, pickle
 import requests
 import bs4
+from boto.s3.connection import S3Connections
 from urls import *
 
-bot = telebot.TeleBot('853967300:AAFlW9k5u-RcKnkRgIka9zAcmnlV-PkAwK4')
+from boto.s3.connection import S3Connection
+token = S3Connection(os.environ['TOKEN'])
+
+bot = telebot.TeleBot(token)
 data = {
     
 }
