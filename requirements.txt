@@ -2,4 +2,3 @@ pytelegrambotapi
 bs4
 requests
 lxml
-boto

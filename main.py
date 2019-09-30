@@ -2,13 +2,9 @@ import telebot
 import os, pickle
 import requests
 import bs4
-from boto.s3.connection import S3Connections
 from urls import *
 
-from boto.s3.connection import S3Connection
-token = S3Connection(os.environ['TOKEN'])
-
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot('853967300:AAFlW9k5u-RcKnkRgIka9zAcmnlV-PkAwK4')
 data = {
     
 }
@@ -81,5 +77,10 @@ def upd(msg):
     dump()
     bot.send_message(my_id, "Больше обновлений нет", reply_markup=kb)
             
+@bot.message_handler(type=['text'])
+def ans(msg):
+    t = msg.text
+    if t[0] == '!':
+        
 
 bot.polling()
