@@ -9,7 +9,7 @@ from PyMailCloud import PyMailCloudError
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-mail_cloud = PyMailCloud("ejudgetest@mail.ru", "00ejudge00")
+#mail_cloud = PyMailCloud("ejudgetest@mail.ru", "00ejudge00")
 
 bot = telebot.TeleBot('853967300:AAFlW9k5u-RcKnkRgIka9zAcmnlV-PkAwK4')
 data = {
@@ -19,8 +19,8 @@ data = {
 kb = telebot.types.ReplyKeyboardMarkup()
 kb.row('/update')
 
-os.remove("users.pkl")
-mail_cloud.download_files("/users.pkl")
+#os.remove("users.pkl")
+#mail_cloud.download_files("/users.pkl")
 
 def dump():
     with open('users.pkl', 'wb') as f:
@@ -82,7 +82,7 @@ def upd(msg):
                     data[contests[i]][name][j] = res[j]
             if (len(resp) > 0):
                 bot.send_message(my_id, contests[i] + " " + name + "\n" + resp)
-    dump()
+    #dump()
     bot.send_message(my_id, "Больше обновлений нет", reply_markup=kb)
 
 bot.polling()
