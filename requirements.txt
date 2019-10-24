@@ -1,4 +1,6 @@
 pytelegrambotapi
 bs4
 requests
+requests_toolbelt
+tqdm
 lxml
