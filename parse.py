@@ -9,6 +9,7 @@ data = {
 }
 
 def dump():
+    #os.remove("users.pkl")
     with open('users.pkl', 'wb') as f:
         pickle.dump(data, f)
 
