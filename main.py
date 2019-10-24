@@ -22,6 +22,9 @@ kb.row('/update')
 #os.remove("users.pkl")
 #mail_cloud.download_files("/users.pkl")
 
+with open("users.pkl", "rb") as f:
+    data = pickle.load(f)
+
 def dump():
     with open('users.pkl', 'wb') as f:
         pickle.dump(data, f)
