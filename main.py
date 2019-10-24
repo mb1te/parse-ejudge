@@ -4,6 +4,13 @@ import requests
 import bs4
 from urls import *
 
+from PyMailCloud import PyMailCloud
+from PyMailCloud import PyMailCloudError
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+mail_cloud = PyMailCloud("ejudgetest@mail.ru", "00ejudge00")
+
 bot = telebot.TeleBot('853967300:AAFlW9k5u-RcKnkRgIka9zAcmnlV-PkAwK4')
 data = {
     
@@ -12,13 +19,14 @@ data = {
 kb = telebot.types.ReplyKeyboardMarkup()
 kb.row('/update')
 
-if os.path.exists('users.pkl'):
-    with open('users.pkl', 'rb') as f:
-        data = pickle.load(f)
+os.remove("users.pkl")
+mail_cloud.download_files("/users.pkl")
 
 def dump():
     with open('users.pkl', 'wb') as f:
         pickle.dump(data, f)
+    mail_cloud.delete_files([{'filename' : 'users.pkl'}])
+    mail_cloud.upload_files([{'filename' : 'users.pkl', 'path' : '/'}])
 
 @bot.message_handler(commands=['start'])
 def hello_msg(msg):
