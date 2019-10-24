@@ -77,6 +77,7 @@ class PyMailCloud:
         # success?
         if loginResponse.status_code == requests.codes.ok and loginResponse.history:
             getTokenResponse = self.session.post("https://cloud.mail.ru/api/v2/tokens/csrf")
+            print(getTokenResponse.status_code)
             if getTokenResponse.status_code is not 200:
                 raise PyMailCloudError.UnknownError
             self.token = json.loads(getTokenResponse.content.decode("utf-8"))['body']['token']
